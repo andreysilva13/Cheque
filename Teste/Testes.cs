@@ -13,8 +13,9 @@ namespace Teste
             ValorBase valor = new ValorBase();
 
             string resultado = valor.PegaValor(2);
-
-            Assert.AreEqual("dois", resultado);
+            string resultado1 = valor.PegaValor(1);
+            Assert.AreEqual("dois reais", resultado);
+            Assert.AreEqual("um real", resultado1);
         }
 
         [TestMethod]
@@ -26,9 +27,9 @@ namespace Teste
             string resultado1 = valor.PegaValor(65);
             string resultado2 = valor.PegaValor(11);
 
-            Assert.AreEqual("vinte e um", resultado);
-            Assert.AreEqual("sessenta e cinco", resultado1);
-            Assert.AreEqual("onze", resultado2);
+            Assert.AreEqual("vinte e um reais", resultado);
+            Assert.AreEqual("sessenta e cinco reais", resultado1);
+            Assert.AreEqual("onze reais", resultado2);
         }
 
         [TestMethod]
@@ -41,7 +42,7 @@ namespace Teste
             string resultado2 = valor.PegaValor(102);
 
             Assert.AreEqual("cem", resultado);
-            Assert.AreEqual("trecentos e quarenta e cinco", resultado1);
+            Assert.AreEqual("trezentos e quarenta e cinco", resultado1);
             Assert.AreEqual("cento e dois", resultado2);
         }
 

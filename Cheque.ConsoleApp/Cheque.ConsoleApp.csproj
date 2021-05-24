@@ -43,11 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConverterValores.cs" />
+    <Compile Include="LengthValores.cs" />
     <Compile Include="ValorBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Valores.cs" />
+    <Compile Include="TratamentoValores.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
