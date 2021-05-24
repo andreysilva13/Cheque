@@ -16,7 +16,7 @@ namespace Cheque.ConsoleApp
                 reais = Unidades(valor.ToCharArray()[0]);
                 if(reais == "um")
                 {
-                    reais = Unidades(valor.ToCharArray()[0]) + " real.";
+                    reais = Unidades(valor.ToCharArray()[0]) + " real";
                 }else
                     reais = Unidades(valor.ToCharArray()[0]) + " reais";
 
