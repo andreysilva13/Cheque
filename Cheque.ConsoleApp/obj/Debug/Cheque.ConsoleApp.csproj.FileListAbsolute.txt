@@ -1,0 +1,7 @@
+C:\Users\Andrey\source\repos\Cheque\Cheque.ConsoleApp\bin\Debug\Cheque.ConsoleApp.exe.config
+C:\Users\Andrey\source\repos\Cheque\Cheque.ConsoleApp\bin\Debug\Cheque.ConsoleApp.exe
+C:\Users\Andrey\source\repos\Cheque\Cheque.ConsoleApp\bin\Debug\Cheque.ConsoleApp.pdb
+C:\Users\Andrey\source\repos\Cheque\Cheque.ConsoleApp\obj\Debug\Cheque.ConsoleApp.csprojAssemblyReference.cache
+C:\Users\Andrey\source\repos\Cheque\Cheque.ConsoleApp\obj\Debug\Cheque.ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\Andrey\source\repos\Cheque\Cheque.ConsoleApp\obj\Debug\Cheque.ConsoleApp.exe
+C:\Users\Andrey\source\repos\Cheque\Cheque.ConsoleApp\obj\Debug\Cheque.ConsoleApp.pdb
