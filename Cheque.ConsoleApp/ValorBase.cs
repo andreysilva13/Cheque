@@ -16,25 +16,49 @@ namespace Cheque.ConsoleApp
             a = new LengthValores();
 
             string valorPorExtenso = "";
+
             string valorSeparado = valor.ToString("F", CultureInfo.CreateSpecificCulture("fr-FR"));
             string[] stringDividida = valorSeparado.Split(',');
             string reais = stringDividida[0];
             string centavos = stringDividida[1];
-
-            if (reais != "0")
+            if(reais == "0" && centavos == "00")
             {
-                valorPorExtenso = a.Converter(reais);
-                return valorPorExtenso;
-            }
-
-            if(centavos != "0")
+                    valorPorExtenso = "Valor inválido";
+            }else if (reais != "0" && centavos == "00")
+                if (reais == "1")
+                    valorPorExtenso = a.Converter(reais) + " real";
+                else
+                    valorPorExtenso += a.Converter(reais) + " reais";
+            else if (reais != "0" && centavos != "00")
             {
-                valorPorExtenso = a.Converter(reais);
+                if (reais == "1")
+                {
+                    valorPorExtenso = a.Converter(reais) + " real e ";
+                    if (centavos == "01")
+                        valorPorExtenso += a.Converter(centavos) + " centavo";
+                    else
+                        valorPorExtenso += a.Converter(centavos) + " centavos";
+                }
+                else if (centavos == "01")
+                {
+                    valorPorExtenso += a.Converter(reais) + " reais e ";
+                    valorPorExtenso += a.Converter(centavos) + " centavo";
+                }
+                else
+                {
+                    valorPorExtenso += a.Converter(reais) + " reais e ";
+                    valorPorExtenso += a.Converter(centavos) + " centavos";
+                }
             }
-
-            return valorSeparado;
+            else
+                if (centavos == "01")
+                valorPorExtenso += a.Converter(centavos) + " centavo";
+            else
+                valorPorExtenso += a.Converter(centavos) + " centavos";
+            
+            return valorPorExtenso;
         }
-
+    
         public string Unidades(char unidade)
         {
             switch (unidade)
@@ -57,6 +81,7 @@ namespace Cheque.ConsoleApp
         {
             switch (dezena)
             {
+                case '1': return "dez";
                 case '2': return "vinte";
                 case '3': return "trinta";
                 case '4': return "quarenta";
@@ -82,15 +107,6 @@ namespace Cheque.ConsoleApp
                 case '7': return "setecentos";
                 case '8': return "oitocentos";
                 case '9': return "novecentos";
-                default: return "";
-            }
-        }
-
-        public string Cem(char centenas)
-        {
-            switch (centenas)
-            {
-                case '1': return "cem";
                 default: return "";
             }
         }

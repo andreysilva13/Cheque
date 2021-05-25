@@ -7,12 +7,53 @@ using System.Threading.Tasks;
 namespace Cheque.ConsoleApp
 {
     public abstract class TratamentoValores : ValorBase
-    {
+    {   
+
+        public string UMilharCentenaDezenaUnidade(char uMilhar, char centena, char dezena, char unidade)
+        {
+            if (uMilhar == '0')
+            {
+                return Centenas(centena) + " e " + DezenaUnidade(dezena, unidade);
+            }
+            else if(centena == '0' && dezena == '0' && unidade == '0')
+            {
+                return Unidades(uMilhar) + " mil";
+            }
+
+            else if (centena == '0' && dezena == '0' && unidade != '0')
+            {
+                return Unidades(uMilhar) + " mil e " + Unidades(unidade);
+            }
+
+            else if (centena != '0' && dezena != '0' && unidade == '0')
+            {
+                return Unidades(uMilhar) + " mil " + Centenas(centena) + " e " + Dezenas(dezena);
+            }
+
+            else if (centena != '0' && dezena == '0' && unidade != '0')
+            {
+                return Unidades(uMilhar) + " mil " + Centenas(centena) + " e " + Unidades(unidade);
+            }
+
+            else if (centena == '0' && dezena != '0' && unidade != '0')
+            {
+                return Unidades(uMilhar) + " mil " + DezenaUnidade(dezena, unidade);
+            }
+
+            else if (centena == '0' && dezena != '0' && unidade == '0')
+            {
+                return Unidades(uMilhar) + " mil e " + Dezenas(dezena);
+            }
+            else
+            {
+                return Unidades(uMilhar) + " mil " + CentenaDezenaUnidade(centena, dezena, unidade);
+            }
+        }
         public string CentenaDezenaUnidade(char centena, char dezena, char unidade)
         {
             if (centena == '1' && dezena == '0' && unidade == '0')
             {
-                return Cem(centena);
+                return "cem";
             }
             else if (dezena == '0' && unidade == '0')
             {
@@ -30,9 +71,7 @@ namespace Cheque.ConsoleApp
             {
                 return Centenas(centena) + " e " + DezenaUnidade(dezena, unidade);
             }
-
         }
-
         public string DezenaUnidade(char dezena, char unidade)
         {
             if (dezena == '0')
