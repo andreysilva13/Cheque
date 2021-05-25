@@ -7,8 +7,58 @@ using System.Threading.Tasks;
 namespace Cheque.ConsoleApp
 {
     public abstract class TratamentoValores : ValorBase
-    {   
+    {
+        public string CMilhao(char cMilhao, char dMilhao, char uMilhao, char cMilhar, char dMilhar, char uMilhar, char centena, char dezena, char unidade)
+        {
+            if (cMilhao == '1' && dMilhao == '0' && uMilhao == '0' && cMilhar == '0' && dMilhar == '0' && uMilhar == '0' && centena == '0' && dezena == '0' && unidade == '0')
+            {
+                return "cem milhões de";
+            }
+            else if (cMilhar == '0' && dMilhar == '0' && uMilhar == '0' && centena == '0' && dezena == '0' && unidade == '0')
+            {
+                return CentenaDezenaUnidade(cMilhao, dMilhao, uMilhao) + " milhões de";
+            }
+            else if (cMilhar == '0' && dMilhar == '0' && uMilhar == '0')
+            {
+                return CentenaDezenaUnidade(cMilhao, dMilhao, uMilhao) + " milhões " + CentenaDezenaUnidade(centena, dezena, unidade);
+            }
+            else
+                return CentenaDezenaUnidade(cMilhao, dMilhao, uMilhao) + " milhões " + CMilharDMilharUMilharCentenaDezenaUnidade(cMilhar, dMilhar, uMilhar, centena, dezena, unidade);
+        }
+        public string DMilhao(char dMilhao, char uMilhao, char cMilhar, char dMilhar, char uMilhar, char centena, char dezena, char unidade)
+        {
+            if (cMilhar == '0' && dMilhar == '0' && uMilhar == '0' && centena == '0' && dezena == '0' && unidade == '0')
+            {
+                return DezenaUnidade(dMilhao, uMilhao) + " milhões de";
+            } else if (cMilhar == '0' && dMilhar == '0' && uMilhar == '0')
+            {
+                return DezenaUnidade(dMilhao, uMilhao) + " milhões " + CentenaDezenaUnidade(centena, dezena, unidade);
+            }
+            else
+                return DezenaUnidade(dMilhao, uMilhao) + " milhões " + CMilharDMilharUMilharCentenaDezenaUnidade(cMilhar, dMilhar, uMilhar, centena, dezena, unidade);
+        }
         public string UMilhao(char uMilhao, char cMilhar, char dMilhar, char uMilhar, char centena, char dezena, char unidade)
+        {
+            //MILHAO
+            if (uMilhao == '1' && cMilhar == '0' && dMilhar == '0' && uMilhar == '0' && centena == '0' && dezena == '0' && unidade == '0')
+            {
+                return Unidades(uMilhao) + " milhão de";
+            }
+            else if (uMilhao == '1' && (cMilhar != '0' || dMilhar != '0' || uMilhar != '0'))
+            {
+                return Unidades(uMilhao) + " milhão " + CMilharDMilharUMilharCentenaDezenaUnidade(cMilhar, dMilhar, uMilhar, centena, dezena, unidade);
+            }
+            else if (cMilhar == '0' && dMilhar == '0' && uMilhar == '0' && centena == '0' && dezena == '0' && unidade == '0')
+            {
+                return Unidades(uMilhao) + " milhões de";
+            }
+            else if(cMilhar != '0' || dMilhar != '0' || uMilhar != '0')
+            {
+                return Unidades(uMilhao) + " milhões " + CMilharDMilharUMilharCentenaDezenaUnidade(cMilhar, dMilhar, uMilhar, centena, dezena, unidade);
+            }
+            else
+                return Unidades(uMilhao) + " milhões " + Centenas(cMilhar) + Dezenas(dMilhar) + Unidades(uMilhar) + Centenas(centena) + Dezenas(dezena) + Unidades(unidade);
+        }
         public string CMilharDMilharUMilharCentenaDezenaUnidade(char cMilhar, char dMilhar, char uMilhar, char centena, char dezena, char unidade)
         {   
             if(centena == '0' && dezena == '0' && unidade == '0')

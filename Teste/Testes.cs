@@ -186,6 +186,50 @@ namespace Teste
         }
 
         [TestMethod]
+        public void TesteUMilhao()
+        {
+            ValorBase valor = new ValorBase();
+
+            string resultado = valor.PegaValor(1000000);
+            string resultado1 = valor.PegaValor(1111111);
+            string resultado2 = valor.PegaValor(5000000);
+            string resultado3 = valor.PegaValor(2525464);
+
+            Assert.AreEqual("um milhão de reais", resultado);
+            Assert.AreEqual("um milhão cento e onze mil cento e onze reais", resultado1);
+            Assert.AreEqual("cinco milhões de reais", resultado2);
+            Assert.AreEqual("dois milhões quinhentos e vinte e cinco mil quatrocentos e sessenta e quatro reais", resultado3);
+        }
+
+        [TestMethod]
+        public void TesteDMilhao()
+        {
+            ValorBase valor = new ValorBase();
+
+            string resultado = valor.PegaValor(25000000);
+            string resultado2 = valor.PegaValor(25342555);
+            string resultado3 = valor.PegaValor(25000555);
+
+            Assert.AreEqual("vinte e cinco milhões de reais", resultado);
+            Assert.AreEqual("vinte e cinco milhões trezentos e quarenta e dois mil quinhentos e cinquenta e cinco reais", resultado2);
+            Assert.AreEqual("vinte e cinco milhões quinhentos e cinquenta e cinco reais", resultado3);
+        }
+
+        [TestMethod]
+        public void TesteCMilhao()
+        {
+            ValorBase valor = new ValorBase();
+
+            string resultado = valor.PegaValor(250000000);
+            string resultado2 = valor.PegaValor(250342555);
+            string resultado3 = valor.PegaValor(252000555);
+
+            Assert.AreEqual("duzentos e cinquenta milhões de reais", resultado);
+            Assert.AreEqual("duzentos e cinquenta milhões trezentos e quarenta e dois mil quinhentos e cinquenta e cinco reais", resultado2);
+            Assert.AreEqual("duzentos e cinquenta e dois milhões quinhentos e cinquenta e cinco reais", resultado3);
+        }
+
+        [TestMethod]
         public void ValorInvalido()
         {
             ValorBase valor = new ValorBase();

@@ -47,6 +47,24 @@ namespace Cheque.ConsoleApp
                 return reais;
             }
 
+            if (valor.Length == 7)
+            {
+                reais = UMilhao(valor.ToCharArray()[0], valor.ToCharArray()[1], valor.ToCharArray()[2], valor.ToCharArray()[3], valor.ToCharArray()[4], valor.ToCharArray()[5], valor.ToCharArray()[6]);
+                return reais;
+            }
+
+            if (valor.Length == 8)
+            {
+                reais = DMilhao(valor.ToCharArray()[0], valor.ToCharArray()[1], valor.ToCharArray()[2], valor.ToCharArray()[3], valor.ToCharArray()[4], valor.ToCharArray()[5], valor.ToCharArray()[6], valor.ToCharArray()[7]);
+                return reais;
+            }
+
+            if (valor.Length == 9)
+            {
+                reais = CMilhao(valor.ToCharArray()[0], valor.ToCharArray()[1], valor.ToCharArray()[2], valor.ToCharArray()[3], valor.ToCharArray()[4], valor.ToCharArray()[5], valor.ToCharArray()[6], valor.ToCharArray()[7], valor.ToCharArray()[8]);
+                return reais;
+            }
+
             return reais;
         }     
     }
