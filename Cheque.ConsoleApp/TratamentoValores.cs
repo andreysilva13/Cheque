@@ -8,65 +8,96 @@ namespace Cheque.ConsoleApp
 {
     public abstract class TratamentoValores : ValorBase
     {   
-
-        public string UMilharCentenaDezenaUnidade(char uMilhar, char centena, char dezena, char unidade)
-        {
-            if (uMilhar == '0')
+        public string UMilhao(char uMilhao, char cMilhar, char dMilhar, char uMilhar, char centena, char dezena, char unidade)
+        public string CMilharDMilharUMilharCentenaDezenaUnidade(char cMilhar, char dMilhar, char uMilhar, char centena, char dezena, char unidade)
+        {   
+            if(centena == '0' && dezena == '0' && unidade == '0')
             {
-                return Centenas(centena) + " e " + DezenaUnidade(dezena, unidade);
+                return CentenaDezenaUnidade(cMilhar, dMilhar, uMilhar) + " mil" + Centenas(centena);
+            } else if (dezena == '0' && unidade == '0')
+            {
+                return DezenaUnidade(dMilhar, uMilhar) + " mil" + Centenas(centena);
             }
-            else if(centena == '0' && dezena == '0' && unidade == '0')
+            else if (centena != 0 && dezena == '0' && unidade == '0')
+            {
+                return DezenaUnidade(dMilhar, uMilhar) + " mil " + "e " + Centenas(centena);
+            }
+            else
+            {
+                return CentenaDezenaUnidade(cMilhar, dMilhar, uMilhar) + " mil " + CentenaDezenaUnidade(centena, dezena, unidade);
+            }
+        }
+        public string DMilharUMilharCentenaDezenaUnidade(char dMilhar, char uMilhar, char centena, char dezena, char unidade)
+        {
+            if (dezena == '0' && unidade == '0')
+            {
+                return DezenaUnidade(dMilhar, uMilhar) + " mil" + Centenas(centena);
+            }
+            else if (centena != 0 && dezena == '0' && unidade == '0')
+            {
+                return DezenaUnidade(dMilhar, uMilhar) + " mil " + "e " + Centenas(centena);
+            }
+            else
+            {
+                return DezenaUnidade(dMilhar, uMilhar) + " mil " + CentenaDezenaUnidade(centena, dezena, unidade);
+            }
+        }
+        public string UMilharCentenaDezenaUnidade(char uMilhar, char centena, char dezena, char unidade)
+        {   
+            //1000
+            if(centena == '0' && dezena == '0' && unidade == '0')
             {
                 return Unidades(uMilhar) + " mil";
             }
-
+            //1001
             else if (centena == '0' && dezena == '0' && unidade != '0')
             {
                 return Unidades(uMilhar) + " mil e " + Unidades(unidade);
             }
-
+            //1110
             else if (centena != '0' && dezena != '0' && unidade == '0')
             {
                 return Unidades(uMilhar) + " mil " + Centenas(centena) + " e " + Dezenas(dezena);
             }
-
+            //1101
             else if (centena != '0' && dezena == '0' && unidade != '0')
             {
                 return Unidades(uMilhar) + " mil " + Centenas(centena) + " e " + Unidades(unidade);
             }
-
+            //1011
             else if (centena == '0' && dezena != '0' && unidade != '0')
             {
                 return Unidades(uMilhar) + " mil " + DezenaUnidade(dezena, unidade);
             }
-
+            //1010
             else if (centena == '0' && dezena != '0' && unidade == '0')
             {
                 return Unidades(uMilhar) + " mil e " + Dezenas(dezena);
             }
+            //1111
             else
             {
                 return Unidades(uMilhar) + " mil " + CentenaDezenaUnidade(centena, dezena, unidade);
             }
         }
         public string CentenaDezenaUnidade(char centena, char dezena, char unidade)
-        {
+        {   
+            //100
             if (centena == '1' && dezena == '0' && unidade == '0')
             {
                 return "cem";
             }
+            //200...
             else if (dezena == '0' && unidade == '0')
             {
                 return Centenas(centena);
             }
-            else if (centena == '0')
-            {
-                return "e " + DezenaUnidade(dezena, unidade);
-            }
+            //101...
             else if (dezena == '0' && unidade != '0')
             {
                 return Centenas(centena) + " e " + Unidades(unidade);
             }
+            //111
             else
             {
                 return Centenas(centena) + " e " + DezenaUnidade(dezena, unidade);

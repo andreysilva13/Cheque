@@ -34,6 +34,19 @@ namespace Cheque.ConsoleApp
                 reais = UMilharCentenaDezenaUnidade(valor.ToCharArray()[0], valor.ToCharArray()[1], valor.ToCharArray()[2], valor.ToCharArray()[3]);
                 return reais;
             }
+
+            if (valor.Length == 5)
+            {
+                reais = DMilharUMilharCentenaDezenaUnidade(valor.ToCharArray()[0], valor.ToCharArray()[1], valor.ToCharArray()[2], valor.ToCharArray()[3], valor.ToCharArray()[4]);
+                return reais;
+            }
+
+            if (valor.Length == 6)
+            {
+                reais = CMilharDMilharUMilharCentenaDezenaUnidade(valor.ToCharArray()[0], valor.ToCharArray()[1], valor.ToCharArray()[2], valor.ToCharArray()[3], valor.ToCharArray()[4], valor.ToCharArray()[5]);
+                return reais;
+            }
+
             return reais;
         }     
     }

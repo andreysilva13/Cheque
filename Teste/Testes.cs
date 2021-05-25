@@ -132,6 +132,60 @@ namespace Teste
         }
 
         [TestMethod]
+        public void TesteDezenaMilhar()
+        {
+            ValorBase valor = new ValorBase();
+
+            string resultado = valor.PegaValor(10000);
+            string resultado1 = valor.PegaValor(11111);
+            string resultado2 = valor.PegaValor(25464);
+
+            Assert.AreEqual("dez mil reais", resultado);
+            Assert.AreEqual("onze mil cento e onze reais", resultado1);
+            Assert.AreEqual("vinte e cinco mil quatrocentos e sessenta e quatro reais", resultado2);
+        }
+
+        [TestMethod]
+        public void TesteDezenaMilharCentavos()
+        {
+            ValorBase valor = new ValorBase();
+
+            string resultado = valor.PegaValor(10000.50);
+            string resultado1 = valor.PegaValor(11111.22);
+            string resultado2 = valor.PegaValor(25464.83);
+
+            Assert.AreEqual("dez mil reais e cinquenta centavos", resultado);
+            Assert.AreEqual("onze mil cento e onze reais e vinte e dois centavos", resultado1);
+            Assert.AreEqual("vinte e cinco mil quatrocentos e sessenta e quatro reais e oitenta e três centavos", resultado2);
+        }
+
+        [TestMethod]
+        public void TesteCentenaMilhar()
+        {
+            ValorBase valor = new ValorBase();
+
+            string resultado = valor.PegaValor(100000);
+            string resultado1 = valor.PegaValor(111111);
+            string resultado2 = valor.PegaValor(525464);
+
+            Assert.AreEqual("cem mil reais", resultado);
+            Assert.AreEqual("cento e onze mil cento e onze reais", resultado1);
+            Assert.AreEqual("quinhentos e vinte e cinco mil quatrocentos e sessenta e quatro reais", resultado2);
+        }
+
+        [TestMethod]
+        public void TesteCentenaMilharCentavos()
+        {
+            ValorBase valor = new ValorBase();
+
+            string resultado = valor.PegaValor(100000.20);
+            string resultado1 = valor.PegaValor(111111.01);
+
+            Assert.AreEqual("cem mil reais e vinte centavos", resultado);
+            Assert.AreEqual("cento e onze mil cento e onze reais e um centavo", resultado1);
+        }
+
+        [TestMethod]
         public void ValorInvalido()
         {
             ValorBase valor = new ValorBase();
