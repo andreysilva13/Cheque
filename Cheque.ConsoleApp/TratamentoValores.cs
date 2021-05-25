@@ -7,7 +7,29 @@ using System.Threading.Tasks;
 namespace Cheque.ConsoleApp
 {
     public abstract class TratamentoValores : ValorBase
-    {
+    {   
+        public string UBilhao(char uBilhao, char cMilhao, char dMilhao, char uMilhao, char cMilhar, char dMilhar, char uMilhar, char centena, char dezena, char unidade)
+        {
+            if (uBilhao == '1' && cMilhao == '0' && dMilhao == '0' && uMilhao == '0' && cMilhar == '0' && dMilhar == '0' && uMilhar == '0' && centena == '0' && dezena == '0' && unidade == '0')
+            {
+                return Unidades(uBilhao) + " bilhão de";
+            }
+            else if (uBilhao == '1' && (cMilhao != '0' || dMilhao != '0' || uMilhao != '0'))
+            {
+                return Unidades(uBilhao) + " bilhao " + CMilhao(cMilhao, dMilhao, uMilhao, cMilhar, dMilhar, uMilhar, centena, dezena, unidade);
+            }
+            else if (cMilhao == '0' && dMilhao == '0' && uMilhao == '0' && cMilhar == '0' && dMilhar == '0' && uMilhar == '0' && centena == '0' && dezena == '0' && unidade == '0')
+            {
+                return Unidades(uBilhao) + " bilhões de";
+            }
+            else if (cMilhao != '0' || dMilhao != '0' || uMilhao != '0')
+            {
+                return Unidades(uBilhao) + " bilhões e " + CMilhao(cMilhao, dMilhao, uMilhao, cMilhar, dMilhar, uMilhar, centena, dezena, unidade);
+            }
+            else
+                return Unidades(uBilhao) + " bilhões e " + Centenas(cMilhao) + Dezenas(dMilhao) + Unidades(uMilhao) + Centenas(cMilhar) + Dezenas(dMilhar) + Unidades(uMilhar) + Centenas(centena) + Dezenas(dezena) + Unidades(unidade);
+
+        }
         public string CMilhao(char cMilhao, char dMilhao, char uMilhao, char cMilhar, char dMilhar, char uMilhar, char centena, char dezena, char unidade)
         {
             if (cMilhao == '1' && dMilhao == '0' && uMilhao == '0' && cMilhar == '0' && dMilhar == '0' && uMilhar == '0' && centena == '0' && dezena == '0' && unidade == '0')
@@ -23,7 +45,7 @@ namespace Cheque.ConsoleApp
                 return CentenaDezenaUnidade(cMilhao, dMilhao, uMilhao) + " milhões " + CentenaDezenaUnidade(centena, dezena, unidade);
             }
             else
-                return CentenaDezenaUnidade(cMilhao, dMilhao, uMilhao) + " milhões " + CMilharDMilharUMilharCentenaDezenaUnidade(cMilhar, dMilhar, uMilhar, centena, dezena, unidade);
+                return CentenaDezenaUnidade(cMilhao, dMilhao, uMilhao) + " milhões e " + CMilharDMilharUMilharCentenaDezenaUnidade(cMilhar, dMilhar, uMilhar, centena, dezena, unidade);
         }
         public string DMilhao(char dMilhao, char uMilhao, char cMilhar, char dMilhar, char uMilhar, char centena, char dezena, char unidade)
         {
@@ -61,12 +83,13 @@ namespace Cheque.ConsoleApp
         }
         public string CMilharDMilharUMilharCentenaDezenaUnidade(char cMilhar, char dMilhar, char uMilhar, char centena, char dezena, char unidade)
         {   
-            if(centena == '0' && dezena == '0' && unidade == '0')
+            if(dMilhar == '0' && uMilhar == '0')
             {
-                return CentenaDezenaUnidade(cMilhar, dMilhar, uMilhar) + " mil" + Centenas(centena);
-            } else if (dezena == '0' && unidade == '0')
+                return CentenaDezenaUnidade(cMilhar, dMilhar, uMilhar) + " mil e " + Centenas(centena);
+
+            } else if (dMilhar == '0' && uMilhar == '0')
             {
-                return DezenaUnidade(dMilhar, uMilhar) + " mil" + Centenas(centena);
+                return CentenaDezenaUnidade(cMilhar, dMilhar, cMilhar) + " mil e " + CentenaDezenaUnidade(centena, dezena, unidade);
             }
             else if (centena != 0 && dezena == '0' && unidade == '0')
             {

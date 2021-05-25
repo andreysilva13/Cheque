@@ -65,6 +65,12 @@ namespace Cheque.ConsoleApp
                 return reais;
             }
 
+            if (valor.Length == 10)
+            {
+                reais = UBilhao(valor.ToCharArray()[0], valor.ToCharArray()[1], valor.ToCharArray()[2], valor.ToCharArray()[3], valor.ToCharArray()[4], valor.ToCharArray()[5], valor.ToCharArray()[6], valor.ToCharArray()[7], valor.ToCharArray()[8], valor.ToCharArray()[9]);
+                return reais;
+            }
+
             return reais;
         }     
     }

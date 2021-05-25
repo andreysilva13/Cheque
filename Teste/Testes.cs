@@ -230,6 +230,20 @@ namespace Teste
         }
 
         [TestMethod]
+        public void TesteBilhao()
+        {
+            ValorBase valor = new ValorBase();
+
+            string resultado = valor.PegaValor(1000000000);
+            string resultado2 = valor.PegaValor(9000000000);
+            string resultado3 = valor.PegaValor(9500500500);
+
+            Assert.AreEqual("um bilhão de reais", resultado);
+            Assert.AreEqual("nove bilhões de reais", resultado2);
+            Assert.AreEqual("nove bilhões e quinhentos milhões e quinhentos mil e quinhentos reais", resultado3);
+        }
+
+        [TestMethod]
         public void ValorInvalido()
         {
             ValorBase valor = new ValorBase();
